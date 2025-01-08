@@ -1,0 +1,21 @@
+{
+  "Inputs" : {
+    "ImageInput" : {
+      "MLFeatureShortDescription" : "224x224x3 image input of model"
+    }
+  },
+  "Outputs" : {
+    "classLabels" : {
+      "MLFeatureShortDescription" : "Correct class label"
+    },
+    "classProbs" : {
+      "MLFeatureShortDescription" : "Class to probability mapping dictionary"
+    }
+  },
+  "TrainingInputs" : {
+
+  },
+  "States" : {
+
+  }
+}

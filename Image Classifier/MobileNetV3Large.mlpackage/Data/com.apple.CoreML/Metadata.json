@@ -1,0 +1,8 @@
+{
+  "MLModelDescriptionKey" : "Mobilenet V3 imagnet model ( Modified )",
+  "MLModelCreatorDefinedKey" : {
+    "coremltoolsVersion" : "3.3"
+  },
+  "MLModelAuthorKey" : "Kristian Emil",
+  "MLModelLicenseKey" : "Open source academic license"
+}

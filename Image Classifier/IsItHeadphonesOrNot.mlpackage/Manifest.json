@@ -1,0 +1,24 @@
+{
+    "fileFormatVersion": "1.0.0",
+    "itemInfoEntries": {
+        "648BD45B-F7F3-418D-B1D4-C769D009A99B": {
+            "author": "com.apple.CoreML",
+            "description": "External FeatureDescription Overlay",
+            "name": "FeatureDescriptions.json",
+            "path": "com.apple.CoreML/FeatureDescriptions.json"
+        },
+        "89FBFF79-8E0A-450A-B59C-FD68C6AB9C2B": {
+            "author": "com.apple.CoreML",
+            "description": "External Metadata Overlay",
+            "name": "Metadata.json",
+            "path": "com.apple.CoreML/Metadata.json"
+        },
+        "E29594E1-8D73-474B-962F-C15C819EDAFE": {
+            "author": "com.apple.CoreML",
+            "description": "CoreML Model Specification",
+            "name": "IsItHeadphonesOrNot.mlmodel",
+            "path": "com.apple.CoreML/IsItHeadphonesOrNot.mlmodel"
+        }
+    },
+    "rootModelIdentifier": "E29594E1-8D73-474B-962F-C15C819EDAFE"
+}

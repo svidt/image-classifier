@@ -94,39 +94,43 @@ struct ClassificationResultsCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: spacing) {
+                VStack(alignment: .leading, spacing: spacing) {
             Text("Classifications")
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
             
             VStack(spacing: isCompactHeight ? 8 : 12) {
-                ForEach(results.components(separatedBy: "\n"), id: \.self) { result in
-                    if !result.isEmpty, let parsed = parseResult(result) {
-                        HStack(spacing: 12) {
-                            Text("\(parsed.confidence)%")
-                                .font(.system(.body, design: .rounded))
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .frame(width: 60)
-                                .padding(.vertical, isCompactHeight ? 4 : 6)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color.blue.opacity(Double(parsed.confidence) / 100.0))
-                                )
-                            
-                            Text(parsed.label)
-                                .font(.system(.body, design: .rounded))
-                                .foregroundColor(.primary)
-                                .lineLimit(2)
-                            
-                            Spacer()
-                        }
-                        .padding(.vertical, isCompactHeight ? 2 : 4)
+                let parsedResults = results.components(separatedBy: "\n")
+                    .compactMap(parseResult)
+                    .filter { $0.confidence > 0 }
+                    .sorted { $0.confidence > $1.confidence }
+                    .prefix(3)
+                
+                ForEach(parsedResults, id: \.label) { parsed in
+                    HStack(spacing: 12) {
+                        Text("\(parsed.confidence)%")
+                            .font(.system(.body, design: .rounded))
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(width: 60)
+                            .padding(.vertical, isCompactHeight ? 4 : 6)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color.blue.opacity(Double(parsed.confidence) / 100.0))
+                            )
                         
-                        if result != results.components(separatedBy: "\n").last {
-                            Divider()
-                        }
+                        Text(parsed.label)
+                            .font(.system(.body, design: .rounded))
+                            .foregroundColor(.primary)
+                            .lineLimit(2)
+                        
+                        Spacer()
+                    }
+                    .padding(.vertical, isCompactHeight ? 2 : 4)
+                    
+                    if parsed.label != parsedResults.last?.label {
+                        Divider()
                     }
                 }
             }
